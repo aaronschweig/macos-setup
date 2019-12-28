@@ -38,6 +38,7 @@ yarn global add @vue/cli @nestjs/cli
 
 echo "Install all the Desktop apps which are possible with brew"
 # Todo 1Password, Spark?
+# Todo Settings for iTerm2 and Font fo P10k
 brew cask install brave-browser firefox visual-studio-code zoomus slack telegram iterm2
 
 echo "Generating an RSA token for Git"
