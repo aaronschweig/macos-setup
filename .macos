@@ -1,0 +1,55 @@
+#! usr/bin/env bash
+
+# Befehl in neuen Macbook reinhämmern
+# curl https://raw.githubusercontent.com/kentcdodds/dotfiles/master/.macos | bash
+
+# Systemeinstellungen schließen --> Sonst überschreibt er
+osascript -e 'tell application "System Preferences" to quit'
+
+# Admin-Rechte
+sudo -v
+
+# Während des langen Installationsprozesses ist es wichtig, sudo zu behalten
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+echo "Hello $(whoami)! Let's get started!"
+
+echo "mkdir -p ${HOME}/Documents/Development"
+mkdir -p ${HOME}/Documents/Development
+
+echo "Install homewbrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+echo "Install important system programms with brew"
+# htop          - Process Monitoring 
+# yarn          - Installing yarn, node and npm in one go
+# tree          - Nice to have to look into File Structures
+# hub           - CLI for Github to quickly create Repositories and all that stuff
+brew install htop tree yarn hub
+
+echo "node --version: $(node --version)"
+echo "npm --version: $(npm --version)"
+echo "yarn --version: $(yarn --version)"
+
+echo "Install a few important global packages"
+# @vue/cli      - Vue-CLI, best Frontend-Framework
+# @nestjs/cli   - Nest-CLI, pretty nice Backend-Framework
+yarn global add @vue/cli @nestjs/cli
+
+echo "Install all the Desktop apps which are possible with brew"
+# Todo 1Password, Spark?
+brew cask install brave-browser firefox visual-studio-code zoomus slack telegram iterm2
+
+echo "Generating an RSA token for Git"
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096
+
+echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub/GitLab wherever else"
+
+echo "Cloning the other configurations"
+git clone git@github.com:aaronschweig/macos-setup.git "${HOME}/dotfiles"
+ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/dotfiles/.p10k.zsh" "${HOME}/.p10k.zsh"
+ln -s "${HOME}/dotfiles/.vimrc" "${HOME}/.vimrc"
+
+# Define Default settings and impleent them here
