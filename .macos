@@ -1,7 +1,7 @@
 #! usr/bin/env bash
 
 # Befehl in neuen Macbook reinhämmern
-# curl https://raw.githubusercontent.com/kentcdodds/dotfiles/master/.macos | bash
+# curl https://raw.githubusercontent.com/aaronschweig/macos-setup/master/.macos | bash
 
 # Systemeinstellungen schließen --> Sonst überschreibt er
 osascript -e 'tell application "System Preferences" to quit'
@@ -39,7 +39,7 @@ yarn global add @vue/cli @nestjs/cli
 echo "Install all the Desktop apps which are possible with brew"
 # Todo 1Password, Spark?
 # Todo Settings for iTerm2 and Font fo P10k
-brew cask install brave-browser firefox visual-studio-code zoomus slack telegram iterm2
+brew cask install brave-browser firefox visual-studio-code insomnia zoomus slack telegram iterm2
 
 echo "Generating an RSA token for Git"
 mkdir -p ~/.ssh
