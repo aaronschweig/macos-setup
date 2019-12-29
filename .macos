@@ -47,6 +47,12 @@ ssh-keygen -t rsa -b 4096
 
 echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub/GitLab wherever else"
 
+echo "Install oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Install P10k Theme"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
 echo "Cloning the other configurations"
 git clone git@github.com:aaronschweig/macos-setup.git "${HOME}/dotfiles"
 ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
