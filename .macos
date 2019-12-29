@@ -37,7 +37,7 @@ echo "Install a few important global packages"
 yarn global add @vue/cli @nestjs/cli
 
 echo "Install all the Desktop apps which are possible with brew"
-# Todo 1Password, Spark?
+# Todo 1Password, Spark, Docker?
 # Todo Settings for iTerm2 and Font fo P10k
 brew cask install brave-browser firefox visual-studio-code insomnia zoomus slack telegram iterm2
 
@@ -50,7 +50,10 @@ echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub/GitLab whereve
 echo "Cloning the other configurations"
 git clone git@github.com:aaronschweig/macos-setup.git "${HOME}/dotfiles"
 ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/dotfiles/.vuerc" "${HOME}/.vuerc"
 ln -s "${HOME}/dotfiles/.p10k.zsh" "${HOME}/.p10k.zsh"
 ln -s "${HOME}/dotfiles/.vimrc" "${HOME}/.vimrc"
 
 # Define Default settings and impleent them here
+echo "Setup is finished! Currently you need to install: \n * 1Password\n * Spark\n * Docker"
+echo "You also need to check the settings (currently manual, should be automated) for MacOS and for iTerm2"
