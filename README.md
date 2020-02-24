@@ -5,3 +5,5 @@ Basically use this of setting up a new Mac. Will install most of the important s
 ```bash
 curl https://raw.githubusercontent.com/aaronschweig/macos-setup/master/.macos | bash
 ```
+
+## PR's are welcome
