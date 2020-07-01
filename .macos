@@ -24,8 +24,8 @@ echo "Install important system programms with brew"
 # htop          - Process Monitoring 
 # yarn          - Installing yarn, node and npm in one go
 # tree          - Nice to have to look into File Structures
-# hub           - CLI for Github to quickly create Repositories and all that stuff
-brew install htop tree yarn hub
+# gh            - Official CLI for Github to quickly create Repositories and all that stuff
+brew install htop tree yarn gh
 
 echo "node --version: $(node --version)"
 echo "npm --version: $(npm --version)"
