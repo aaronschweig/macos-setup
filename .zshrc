@@ -116,3 +116,4 @@ if [ -f '/Users/aaronschweig/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aa
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/aaronschweig/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aaronschweig/google-cloud-sdk/completion.zsh.inc'; fi
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
