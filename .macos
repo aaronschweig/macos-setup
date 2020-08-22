@@ -39,9 +39,9 @@ yarn global add @vue/cli @nestjs/cli
 echo "Install all the Desktop apps which are possible with brew"
 # Todo Spark, Docker?
 # Todo Settings for iTerm2 and Font for P10k
-brew cask install brave-browser firefox \
+brew cask install brave-browser \
 visual-studio-code insomnia zoomus slack \
-telegram iterm2 protonvpn 1password iterm2 \
+telegram iterm2 protonvpn \
 spotify
 
 echo "Generating an RSA token for Git"
@@ -66,7 +66,7 @@ ln -s "${HOME}/dotfiles/.vimrc" "${HOME}/.vimrc"
 ln -s "${HOME}/dotfiles/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
 ln -s "${HOME}/dotfiles/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
 
-cat $HOME/dotfiles/vscode/vscode-extension.list | xargs -L 1 code --install-extension
+# cat $HOME/dotfiles/vscode/vscode-extension.list | xargs -L 1 code --install-extension
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool false
