@@ -10,8 +10,17 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/aaronschweig/.oh-my-zsh"
-export GOPATH=$HOME/Documents/Development/go
+export PATH=/Users/aaronschweig/go/bin:$PATH
+export PATH=/Users/aaronschweig/Documents/Development/flutter/bin:$PATH
+export PATH=/Users/aaronschweig/.linkerd2/bin:$PATH
+export PATH=$HOME/.pub-cache/bin:$PATH
+export GO111MODULE=on
 
+# Tensorflow GO Bindings
+# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
+# export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib
+
+export CHROME_EXECUTABLE=/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -110,10 +119,10 @@ alias c="code ."
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/aaronschweig/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aaronschweig/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/aaronschweig/Documents/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aaronschweig/Documents/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/aaronschweig/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aaronschweig/google-cloud-sdk/completion.zsh.inc'; fi
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+if [ -f '/Users/aaronschweig/Documents/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aaronschweig/Documents/google-cloud-sdk/completion.zsh.inc'; fi

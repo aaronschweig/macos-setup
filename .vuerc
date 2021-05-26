@@ -1,8 +1,8 @@
 {
   "useTaobaoRegistry": false,
   "packageManager": "yarn",
-  "latestVersion": "4.4.6",
-  "lastChecked": 1593457959819,
+  "latestVersion": "4.5.4",
+  "lastChecked": 1598728939281,
   "presets": {
     "@ams/quick": {
       "useConfigFiles": true,

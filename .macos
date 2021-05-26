@@ -25,7 +25,8 @@ echo "Install important system programms with brew"
 # yarn          - Installing yarn, node and npm in one go
 # tree          - Nice to have to look into File Structures
 # gh            - Official CLI for Github to quickly create Repositories and all that stuff
-brew install htop tree yarn gh
+# jq            - For json formatting
+brew install htop tree yarn gh jq
 
 echo "node --version: $(node --version)"
 echo "npm --version: $(npm --version)"
@@ -34,15 +35,15 @@ echo "yarn --version: $(yarn --version)"
 echo "Install a few important global packages"
 # @vue/cli      - Vue-CLI, best Frontend-Framework
 # @nestjs/cli   - Nest-CLI, pretty nice Backend-Framework
-yarn global add @vue/cli @nestjs/cli
+# yarn global add @vue/cli @nestjs/cli
 
 echo "Install all the Desktop apps which are possible with brew"
 # Todo Spark, Docker?
 # Todo Settings for iTerm2 and Font for P10k
 brew cask install brave-browser \
-visual-studio-code insomnia zoomus slack \
-telegram iterm2 protonvpn \
-spotify
+visual-studio-code protonvpn \
+iterm2 neovim \
+spotify zoomus telegram
 
 echo "Generating an RSA token for Git"
 mkdir -p ~/.ssh
@@ -63,10 +64,18 @@ ln -s "${HOME}/dotfiles/.vuerc" "${HOME}/.vuerc"
 ln -s "${HOME}/dotfiles/.p10k.zsh" "${HOME}/.p10k.zsh"
 ln -s "${HOME}/dotfiles/.vimrc" "${HOME}/.vimrc"
 # Link VSCode-Settings
-ln -s "${HOME}/dotfiles/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-ln -s "${HOME}/dotfiles/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+# NOT NECESSARY DUE TO VSCODE SYNC ENABLED
+# ln -s "${HOME}/dotfiles/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+# ln -s "${HOME}/dotfiles/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
 
 # cat $HOME/dotfiles/vscode/vscode-extension.list | xargs -L 1 code --install-extension
+
+# neovim
+mkdir -p ~/.config/nvim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+ln -s "${HOME}/dotfiles/init.vim" "${HOME}/.config/nvim/init.vim"
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool false
