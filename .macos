@@ -20,36 +20,17 @@ mkdir -p ${HOME}/Documents/Development
 echo "Install homewbrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Install important system programms with brew"
+echo "Install programms with brew"
 # htop          - Process Monitoring 
-# yarn          - Installing yarn, node and npm in one go
-# tree          - Nice to have to look into File Structures
+# pnpm          - storage-sensitive package manager
 # gh            - Official CLI for Github to quickly create Repositories and all that stuff
 # jq            - For json formatting
-brew install htop tree yarn gh jq
-
-echo "node --version: $(node --version)"
-echo "npm --version: $(npm --version)"
-echo "yarn --version: $(yarn --version)"
-
-echo "Install a few important global packages"
-# @vue/cli      - Vue-CLI, best Frontend-Framework
-# @nestjs/cli   - Nest-CLI, pretty nice Backend-Framework
-# yarn global add @vue/cli @nestjs/cli
+brew install htop pnpm gh jq go
 
 echo "Install all the Desktop apps which are possible with brew"
 # Todo Spark, Docker?
 # Todo Settings for iTerm2 and Font for P10k
-brew cask install brave-browser \
-visual-studio-code protonvpn \
-iterm2 neovim \
-spotify zoomus telegram
-
-echo "Generating an RSA token for Git"
-mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096
-
-echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub/GitLab wherever else"
+brew install --cask brave-browser visual-studio-code iterm2 spotify telegram
 
 echo "Install oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -58,27 +39,13 @@ echo "Install P10k Theme"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
 echo "Cloning the other configurations"
-git clone git@github.com:aaronschweig/macos-setup.git "${HOME}/dotfiles"
+git clone https://github.com/aaronschweig/macos-setup.git "${HOME}/dotfiles"
 ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
-ln -s "${HOME}/dotfiles/.vuerc" "${HOME}/.vuerc"
 ln -s "${HOME}/dotfiles/.p10k.zsh" "${HOME}/.p10k.zsh"
-ln -s "${HOME}/dotfiles/.vimrc" "${HOME}/.vimrc"
-# Link VSCode-Settings
-# NOT NECESSARY DUE TO VSCODE SYNC ENABLED
-# ln -s "${HOME}/dotfiles/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-# ln -s "${HOME}/dotfiles/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
-
-# cat $HOME/dotfiles/vscode/vscode-extension.list | xargs -L 1 code --install-extension
-
-# neovim
-mkdir -p ~/.config/nvim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-ln -s "${HOME}/dotfiles/init.vim" "${HOME}/.config/nvim/init.vim"
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool false
+defaults write com.apple.dock show-recents -bool false
 
 # Define Default settings and impleent them here
 echo "Setup is finished! Currently you need to install: \n * Spark\n * Docker"
